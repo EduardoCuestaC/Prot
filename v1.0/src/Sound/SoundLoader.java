@@ -26,6 +26,7 @@ public class SoundLoader {
         return instance;
     }
 
+
     public Clip load(String path){
 
         Clip c = null;

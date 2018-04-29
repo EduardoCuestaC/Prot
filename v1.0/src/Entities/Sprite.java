@@ -15,7 +15,7 @@ public class Sprite extends Entity{
         image = sheet.getSubimage(0, 0, sheet.getWidth(), sheet.getHeight());
         w = image.getWidth();
         h = image.getHeight();
-        boundingBox = new Rectangle(x, y, w, h);
+        boundingBox = null;//new Rectangle(x, y, w, h);
     }
 
     @Override

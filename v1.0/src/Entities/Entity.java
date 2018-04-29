@@ -10,7 +10,7 @@ public abstract class Entity {
     protected Color color;
     public abstract void update();
     public abstract void render(Graphics g);
-    protected Rectangle boundingBox = new Rectangle(x, y, w, h);
+    protected Rectangle boundingBox = null;//new Rectangle(x, y, w, h);
 
     public int getX() {
         return x;
