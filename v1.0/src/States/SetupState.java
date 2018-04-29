@@ -1,7 +1,9 @@
 package States;
 
+import Engine.Grid;
 import Entities.Player;
 import Entities.Rect;
+import Entities.Tile;
 import Events.Counter;
 import Game.GameContext;
 import Sound.Track;
@@ -12,6 +14,7 @@ public class SetupState extends GameState {
     private Track track =   new Track("dog");
     private boolean once = false;
     private Player player;
+    private Tile tile = new Tile(200, 170, 80, 10 );
 
     public SetupState(){
         player = new Player();
@@ -39,6 +42,7 @@ public class SetupState extends GameState {
 
     @Override
     public void gameUpdate() {
+        player.update();
     }
 
     @Override
@@ -54,5 +58,6 @@ public class SetupState extends GameState {
         }
         g.setColor(Color.black);
         player.render(g);
+        tile.render(g);
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.lang.Math;
 
 public class Grid {
-    private ArrayList<Entity> grid [][];
+    private ArrayList<Entity>[][] grid;
     private int cellSize, width, height, lsx = 0, lsy = 0, lex = 0, ley = 0, x=0, y=0;
     private static Grid instance;
 
@@ -21,7 +21,7 @@ public class Grid {
         this.y = y;
     }
 
-    public Grid getInstance(){
+    public static Grid getInstance(){
         if(instance == null)
             instance = new Grid();
         return instance;
@@ -31,14 +31,12 @@ public class Grid {
         width = 15;
         height = 10;
         cellSize = 50;
-    }
-
-    public ArrayList<Entity>[][] getGrid() {
-        return grid;
-    }
-
-    public void setGrid(ArrayList<Entity>[][] grid) {
-        this.grid = grid;
+        grid = new ArrayList[width][height];
+        for(int i = 0; i<grid.length; i++){
+            for(int j = 0; j<grid[i].length; j++){
+                grid[i][j] = new ArrayList<>();
+            }
+        }
     }
 
     public int getCellSize() {
@@ -133,7 +131,7 @@ public class Grid {
         return collectedEntities;
     }
 
-    public void c(Entity e){
+    public void checkCollisions(Entity e){
         int type = 4;
         ArrayList<Entity> surrounders = getSurroundingEntities(e);
         for(Entity surrounder : surrounders){

@@ -1,5 +1,6 @@
 package Entities;
 
+import Engine.Grid;
 import Engine.RigidBody;
 import Events.*;
 
@@ -39,11 +40,12 @@ public class Player extends Entity implements Observer, RigidBody {
         setH(40);
         KeySubject.getInstance().subscribe(this);
         current = controllable;
+        Grid.getInstance().add(this);
     }
 
     @Override
     public void update() {
-
+        Grid.getInstance().checkCollisions(this);
     }
 
     @Override
@@ -74,7 +76,7 @@ public class Player extends Entity implements Observer, RigidBody {
 
     @Override
     public void react(int type) {
-
+        System.out.println("type is: "+type);
     }
 
     public void changeToControllable(){
