@@ -1,24 +1,19 @@
 package States;
 
-import Engine.Grid;
-import Entities.Player;
-import Entities.Rect;
-import Entities.Tile;
-import Events.Counter;
 import Game.GameContext;
 import Sound.Track;
+import TileMap.TileMap;
 
 import java.awt.*;
 
-public class SetupState extends GameState {
-    private Track track =   new Track("dog", false);
+public class PlayState extends GameState {
+    private Track track =   new Track("dog", true);
     private boolean once = false;
-    private Player player;
-    private Tile tile = new Tile(200, 170, 80, 10 );
+    private String nivel;
+    private TileMap tilemap = new TileMap("C:\\Users\\ALEXI\\IdeaProjects\\TileMap\\src\\TileMap\\nivel1.txt", 32);
 
-    public SetupState(){
-        player = new Player();
-        player.setFigure(new Rect(player.getX(), player.getY(), player.getW(), player.getH()));
+    public PlayState(){
+        nivel = "C:\\Users\\ALEXI\\IdeaProjects\\TileMap\\src\\TileMap\\nivel1.txt";
     }
 
     @Override
@@ -42,7 +37,6 @@ public class SetupState extends GameState {
 
     @Override
     public void gameUpdate() {
-        player.update();
     }
 
     @Override
@@ -56,8 +50,7 @@ public class SetupState extends GameState {
             track.play();
             once = true;
         }
-        g.setColor(Color.black);
-        player.render(g);
-        tile.render(g);
+        tilemap.paint(g);
+
     }
 }

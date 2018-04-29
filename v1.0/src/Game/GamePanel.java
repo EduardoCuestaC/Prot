@@ -16,7 +16,7 @@ public class GamePanel extends JPanel implements Runnable{
     private boolean isRunning;
     private int kFPS = 60;
     private long period = 1000/kFPS;
-    private int kPanelWidth = 750, kPanelHeight=500;
+    private int kPanelWidth = 1300, kPanelHeight =520;
     private Graphics ig;
     private Image bImage = null;
     private Thread animator;

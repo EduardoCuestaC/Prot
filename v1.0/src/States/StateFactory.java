@@ -19,6 +19,8 @@ public class StateFactory {
                 return new SetupState();
             case "stopped":
                 return new StoppedState();
+            case "play":
+                return new PlayState();
             default:
                 return null;
         }
