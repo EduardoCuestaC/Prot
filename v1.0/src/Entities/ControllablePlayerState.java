@@ -1,5 +1,6 @@
 package Entities;
 
+import Engine.Jumper;
 import Events.KeySubject;
 import Events.MouseSubject;
 import Events.Subject;
@@ -11,8 +12,10 @@ public class ControllablePlayerState extends PlayerState {
 
     @Override
     public void updateOnEvent(Subject subject) {
-        if(subject == KeySubject.getInstance())
-            System.out.println("jijiji");
+        if(subject == KeySubject.getInstance()){
+            new Jumper(player.getBuffer(), -10);
+        }
+
         /*
         if(subject == MouseSubject.getInstance()){
             if(player.getBoundingBox().contains(((MouseSubject) subject).getState()[0], ((MouseSubject) subject).getState()[1]))

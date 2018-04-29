@@ -1,5 +1,6 @@
 package Entities;
 
+import Engine.Buffer;
 import Engine.Grid;
 import Engine.RigidBody;
 import Events.*;
@@ -17,6 +18,16 @@ public class Player extends Entity implements Observer, RigidBody {
     private PlayerState controllable = new ControllablePlayerState(this);
     private PlayerState uncontrollable = new UncontrollablePlayerState(this);
     private PlayerState current;
+    private Buffer buffer = new Buffer();
+
+    public Buffer getBuffer() {
+        return buffer;
+    }
+
+    public void setBuffer(Buffer buffer) {
+        this.buffer = buffer;
+    }
+
 
 
     public PlayerState getControllable() {
@@ -34,21 +45,59 @@ public class Player extends Entity implements Observer, RigidBody {
 
 
     public Player(){
-        setX(200);
-        setY(200);
-        setW(40);
-        setH(40);
         KeySubject.getInstance().subscribe(this);
         current = controllable;
         Grid.getInstance().add(this);
     }
 
     @Override
-    public void update() {
-        Grid.getInstance().checkCollisions(this);
+    public void setX(int x){
+        this.x = x;
+        boundingBox.setBounds(this.x, y, w, h);
+        updateBorders();
+        figure.setX(this.x);
     }
 
     @Override
+    public void setY(int y) {
+        this.y = y;
+        boundingBox.setBounds(x, this.y, w, h);
+        updateBorders();
+        figure.setY(this.y);
+    }
+
+    @Override
+    public void setW(int w) {
+        this.w = w;
+        boundingBox.setBounds(x, y, this.w, h);
+        updateBorders();
+        figure.setW(this.w);
+    }
+
+    @Override
+    public void setH(int h) {
+        this.h = h;
+        boundingBox.setBounds(x, y, w, this.h);
+        updateBorders();
+        figure.setH(this.h);
+    }
+
+    @Override
+    public void update() {
+        Grid.getInstance().checkCollisions(this);
+        int a;
+        try {
+            if(!buffer.isEmpty()) {
+                a = buffer.get();
+                setY(getY() + a);
+                System.out.println(a);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void updateBorders(){
         borders[0].setBounds(x+w, y, 1, h);
         borders[1].setBounds(x, y-1, w, 1);

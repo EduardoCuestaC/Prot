@@ -116,8 +116,8 @@ public class Grid {
 
         int startX = Math.max(x,e.getX()/cellSize);
         int startY = Math.max(y,e.getY()/cellSize);
-        int endX = Math.min(width, (e.getX()+e.getW())/cellSize);
-        int endY = Math.min(height, (e.getY()+e.getH())/cellSize);
+        int endX = Math.min(width-1, (e.getX()+e.getW())/cellSize);
+        int endY = Math.min(height-1, (e.getY()+e.getH())/cellSize);
 
         ArrayList<Entity> collectedEntities = new ArrayList<>();
         for(int i = startX; i<=endX; i++){

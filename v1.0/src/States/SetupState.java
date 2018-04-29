@@ -14,11 +14,15 @@ public class SetupState extends GameState {
     private Track track =   new Track("dog");
     private boolean once = false;
     private Player player;
-    private Tile tile = new Tile(200, 170, 80, 10 );
+    private Tile tile = new Tile(200, 240, 80, 10 );
 
     public SetupState(){
         player = new Player();
         player.setFigure(new Rect(player.getX(), player.getY(), player.getW(), player.getH()));
+        player.setX(200);
+        player.setY(200);
+        player.setW(40);
+        player.setH(40);
     }
 
     @Override

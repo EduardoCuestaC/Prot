@@ -4,7 +4,7 @@ import Engine.Grid;
 
 import java.awt.*;
 
-public class Tile extends Enemy{
+public class Tile extends Entity{
 
     public Tile(int x, int y, int w, int h)
     {
