@@ -6,6 +6,7 @@ This class maintains a constant frame rate on animation and uses threading and s
 
 
 
+import Events.KeySubject;
 import Events.MouseSubject;
 
 import javax.swing.*;
@@ -124,5 +125,6 @@ public class GamePanel extends JPanel implements Runnable{
         this.context = context;
         //listeners
         addMouseListener(MouseSubject.getInstance());
+        addKeyListener(KeySubject.getInstance());
     }
 }

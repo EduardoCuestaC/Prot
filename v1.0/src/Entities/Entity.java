@@ -12,6 +12,10 @@ public abstract class Entity {
     public abstract void render(Graphics g);
     protected Rectangle boundingBox = new Rectangle(x, y, w, h);
 
+    public Rectangle getBoundingBox(){
+        return boundingBox;
+    }
+
     public int getX() {
         return x;
     }
@@ -19,6 +23,7 @@ public abstract class Entity {
     public void setX(int x) {
         this.x = x;
         boundingBox.setBounds(this.x, y, w, h);
+        updateBorders();
     }
 
     public int getY() {
@@ -28,6 +33,7 @@ public abstract class Entity {
     public void setY(int y) {
         this.y = y;
         boundingBox.setBounds(x, this.y, w, h);
+        updateBorders();
     }
 
     public int getW() {
@@ -37,6 +43,7 @@ public abstract class Entity {
     public void setW(int w) {
         this.w = w;
         boundingBox.setBounds(x, y, this.w, h);
+        updateBorders();
     }
 
     public int getH() {
@@ -46,6 +53,11 @@ public abstract class Entity {
     public void setH(int h) {
         this.h = h;
         boundingBox.setBounds(x, y, w, this.h);
+        updateBorders();
+    }
+
+    public void updateBorders(){
+
     }
 
     public Color getColor() {

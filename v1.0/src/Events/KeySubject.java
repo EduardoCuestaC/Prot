@@ -39,7 +39,7 @@ public class KeySubject implements Subject, KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        notifyObservers();
     }
 
     @Override

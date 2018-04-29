@@ -1,7 +1,5 @@
 package Entities;
 
-import Events.MouseSubject;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -15,7 +13,7 @@ public class Sprite extends Entity{
         image = sheet.getSubimage(0, 0, sheet.getWidth(), sheet.getHeight());
         w = image.getWidth();
         h = image.getHeight();
-        boundingBox = null;//new Rectangle(x, y, w, h);
+        boundingBox = new Rectangle(x, y, w, h);
     }
 
     @Override
