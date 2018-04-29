@@ -6,6 +6,7 @@ public class Jumper implements Runnable, Producer{
     private double fg = 0.5;
     private Buffer buff;
     private int i =0;
+    private Thread t;
 
     public Jumper(Buffer buffer, int vi){
         this.vi = vi;
@@ -37,10 +38,12 @@ public class Jumper implements Runnable, Producer{
     @Override
     public void start() {
         t = new Thread(this);
+        t.start();
     }
 
     @Override
     public void stop() {
+        t.stop();
 
     }
 }

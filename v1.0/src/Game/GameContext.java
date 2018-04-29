@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class GameContext{
     private GameState stopped;
     private GameState setup;
+    private GameState play;
 
     private GameState current;
 
@@ -47,10 +48,13 @@ public class GameContext{
     public GameContext(){
         stopped = StateFactory.getInstance().createState("stopped");
         setup = StateFactory.getInstance().createState("setup");
+        play = StateFactory.getInstance().createState("play");
+
         stopped.setGameContext(this);
         setup.setGameContext(this);
+        play.setGameContext(this);
 
-        current = setup;
+        current = play;
     }
 
 }

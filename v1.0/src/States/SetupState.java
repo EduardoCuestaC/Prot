@@ -11,7 +11,7 @@ import Sound.Track;
 import java.awt.*;
 
 public class SetupState extends GameState {
-    private Track track =   new Track("dog");
+    private Track track =   new Track("dog", false);
     private boolean once = false;
     private Player player;
     private Tile tile = new Tile(200, 240, 80, 10 );
